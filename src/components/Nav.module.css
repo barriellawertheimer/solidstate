@@ -1,0 +1,124 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-nav-bg);
+  color: var(--color-nav-fg);
+  box-shadow: var(--shadow-sm);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 3.5rem;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-nav-fg);
+  background: transparent;
+  transition: background var(--transition-fast);
+}
+
+.toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.toggleIcon {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 1.25rem;
+}
+
+.toggleIcon span {
+  display: block;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform var(--transition-base), opacity var(--transition-fast);
+  transform-origin: center;
+}
+
+.toggleIcon span[data-open='true']:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.toggleIcon span[data-open='true']:nth-child(2) {
+  opacity: 0;
+}
+.toggleIcon span[data-open='true']:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 767.98px) {
+  .menu {
+    position: absolute;
+    inset: 100% 0 auto 0;
+    background: var(--color-nav-bg);
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--transition-base);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+  }
+  .menu[data-open='true'] {
+    grid-template-rows: 1fr;
+  }
+  .menu > li {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 0;
+  }
+  .menu > li:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .menu a {
+    display: block;
+    padding: var(--space-4) var(--space-6);
+  }
+  .menu[data-open='true'] {
+    overflow: visible;
+  }
+}
+
+@media (min-width: 768px) {
+  .toggle {
+    display: none;
+  }
+  .menu {
+    display: flex;
+    gap: var(--space-2);
+  }
+  .menu a {
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+  }
+  .menu a:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.menu a {
+  color: var(--color-nav-fg);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--fs-100);
+  letter-spacing: 0.01em;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.menu a:hover {
+  color: var(--color-nav-fg);
+}

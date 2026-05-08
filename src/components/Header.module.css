@@ -1,0 +1,32 @@
+.header {
+  background:
+    radial-gradient(circle at 80% -20%, rgba(255, 184, 77, 0.25), transparent 50%),
+    radial-gradient(circle at 0% 120%, rgba(47, 158, 88, 0.5), transparent 60%),
+    linear-gradient(140deg, #1d6b3b, #2f9e58);
+  color: var(--color-nav-fg);
+  padding-block: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding-block: var(--space-16);
+  }
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  text-align: left;
+}
+
+.title {
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--fs-300);
+  max-width: 50ch;
+}

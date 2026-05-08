@@ -1,0 +1,26 @@
+.footer {
+  background: var(--color-nav-bg);
+  color: var(--color-nav-fg);
+  padding-block: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.muted {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--fs-100);
+}
