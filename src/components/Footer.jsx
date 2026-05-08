@@ -5,8 +5,8 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
-        <p>&copy; {year} Barriella's Tech Services. All rights reserved.</p>
-        <p className={styles.muted}>Built with React + Vite. Hosted on GitHub Pages.</p>
+        <p>&copy; {year} SolidState Studio Tech Services. All rights reserved.</p>
+        <p className={styles.muted}>Built with React + Vite. Protected by Cloudflare</p>
       </div>
     </footer>
   );
