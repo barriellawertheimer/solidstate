@@ -20,11 +20,25 @@ export default function ContactForm() {
   };
 
   useEffect(() => {
-    if (window.turnstile && widgetRef.current && TURNSTILE_SITE_KEY) {
-      window.turnstile.render(widgetRef.current, {
-        sitekey: TURNSTILE_SITE_KEY,
-      });
-    }
+    const renderWidget = () => {
+      if (window.turnstile && widgetRef.current && TURNSTILE_SITE_KEY) {
+        window.turnstile.render(widgetRef.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+        });
+      } else {
+        console.warn('Turnstile not ready:', {
+          turnstileAvailable: !!window.turnstile,
+          refAvailable: !!widgetRef.current,
+          siteKeyAvailable: !!TURNSTILE_SITE_KEY,
+        });
+      }
+    };
+
+    // Try immediately, then retry if script isn't loaded yet
+    renderWidget();
+    const timeout = setTimeout(renderWidget, 500);
+
+    return () => clearTimeout(timeout);
   }, [TURNSTILE_SITE_KEY]);
 
   const handleSubmit = async (e) => {
