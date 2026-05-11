@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import styles from './ContactForm.module.css';
 
 const EMAIL = 'claude@barriella.com';
@@ -18,6 +18,14 @@ export default function ContactForm() {
       window.turnstile.reset(widgetRef.current);
     }
   };
+
+  useEffect(() => {
+    if (window.turnstile && widgetRef.current && TURNSTILE_SITE_KEY) {
+      window.turnstile.render(widgetRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+      });
+    }
+  }, [TURNSTILE_SITE_KEY]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -132,7 +140,6 @@ export default function ContactForm() {
       <div
         ref={widgetRef}
         className="cf-turnstile"
-        data-sitekey={TURNSTILE_SITE_KEY}
       />
 
       <button type="submit" className={styles.submit} disabled={sending}>
