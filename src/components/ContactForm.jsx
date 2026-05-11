@@ -145,10 +145,7 @@ export default function ContactForm() {
       {status.kind === 'error' && (
         <p className={styles.errorNote}>{status.message}</p>
       )}
-
-      <p className={styles.note}>
-        Or write to <a href={`mailto:${EMAIL}`}>{EMAIL}</a> directly.
-      </p>
+      
     </form>
   );
 }
